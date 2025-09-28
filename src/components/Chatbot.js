@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments, faTimes, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import dealerConfig from '../data/dealerConfig.json';
@@ -9,7 +9,7 @@ const Chatbot = ({ isDarkMode }) => {
     { text: dealerConfig.dealer?.chatMessage || "Hello! How can I help you today?", sender: 'bot' }
   ]);
   const [input, setInput] = useState('');
-  const [inactivityTimer, setInactivityTimer] = useState(null);
+  const inactivityTimerRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -20,23 +20,23 @@ const Chatbot = ({ isDarkMode }) => {
           whatsappLink: true
         }]);
       }, 2000);
-      setInactivityTimer(timer);
+      inactivityTimerRef.current = timer;
     } else {
-      if (inactivityTimer) {
-        clearTimeout(inactivityTimer);
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
       }
     }
 
     return () => {
-      if (inactivityTimer) {
-        clearTimeout(inactivityTimer);
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
       }
     };
   }, [isOpen]);
 
   const resetInactivityTimer = () => {
-    if (inactivityTimer) {
-      clearTimeout(inactivityTimer);
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
     }
     const timer = setTimeout(() => {
       setMessages(prev => [...prev, {
@@ -45,7 +45,7 @@ const Chatbot = ({ isDarkMode }) => {
         whatsappLink: true
       }]);
     }, 2000);
-    setInactivityTimer(timer);
+    inactivityTimerRef.current = timer;
   };
 
   const responses = {
