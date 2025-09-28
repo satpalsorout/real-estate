@@ -1,50 +1,71 @@
-import React, { Component } from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import React, { useContext, useState, useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import { ThemeProvider, ThemeContext } from './context/ThemeContext';
+import Header from './components/Header';
+import Home from './components/Home';
+import Admin from './components/Admin';
+import Login from './components/Login';
+import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
+import dealerConfig from './data/dealerConfig.json';
+import './App.css';
 
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
-  }
+function AppContent() {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const [currentView, setCurrentView] = useState('home');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  handleClick = api => e => {
-    e.preventDefault()
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loggedIn);
+  }, []);
 
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
-  }
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setCurrentView('admin');
+  };
 
-  render() {
-    const { loading, msg } = this.state
+  const handleAdminClick = () => {
+    if (isLoggedIn) {
+      setCurrentView('admin');
+    } else {
+      setCurrentView('login');
+    }
+  };
 
-    return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    )
-  }
+  const renderView = () => {
+    switch (currentView) {
+      case 'home':
+        return <Home isDarkMode={isDarkMode} />;
+      case 'admin':
+        return isLoggedIn ? <Admin isDarkMode={isDarkMode} /> : <Login onLogin={handleLogin} isDarkMode={isDarkMode} />;
+      case 'login':
+        return <Login onLogin={handleLogin} isDarkMode={isDarkMode} />;
+      default:
+        return <Home isDarkMode={isDarkMode} />;
+    }
+  };
+
+  return (
+    <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>
+      <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} setCurrentView={setCurrentView} isLoggedIn={isLoggedIn} onAdminClick={handleAdminClick} />
+      {renderView()}
+      <Footer isDarkMode={isDarkMode} />
+      {dealerConfig.customizationOptions?.enableChatbot && (
+        <Chatbot isDarkMode={isDarkMode} />
+      )}
+    </div>
+  );
 }
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
-      </div>
-    )
-  }
+function App() {
+  return (
+    <HelmetProvider>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </HelmetProvider>
+  );
 }
 
-export default App
+export default App;

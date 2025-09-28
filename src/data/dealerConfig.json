@@ -1,0 +1,41 @@
+{
+  "dealer": {
+    "name": "Jaideep Real Estate",
+    "address": "Jaideep Real Estate sector 65 Faridabad 121004, HR, India",
+    "location": "Faridabad",
+    "area": "Haryana, India",
+    "googleLocation": "https://maps.app.goo.gl/sZyA44VjVaTiHX2b8?g_st=iw",
+    "websiteName": "Faridabad Property",
+    "phone": "+91 9999068444",
+    "whatsapp": "9999068444",
+    "email": "Jaideeppanwar2046@gmail.com",
+    "description": "Leading property dealer specializing in residential and commercial real estate solutions in Faridabad. We offer comprehensive services including property sales, purchases, rentals, and investment opportunities in the growing Faridabad region.",
+    "chatMessage": "Hello! How can I help you with your property search in Faridabad today?",
+    "logo": "/logo.png",
+    "heroBg": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200",
+    "socialLinks": {
+      "facebook": "https://facebook.com/faridabadproperty",
+      "twitter": "https://twitter.com/faridabadproperty",
+      "linkedin": "https://linkedin.com/company/faridabadproperty"
+    }
+  },
+  "theme": {
+    "defaultMode": "light",
+    "allowThemeToggle": true,
+    "customizations": {
+      "primaryColor": "#007bff",
+      "secondaryColor": "#6c757d",
+      "accentColor": "#28a745"
+    }
+  },
+  "admin": {
+    "username": "admin",
+    "password": "faridabad123"
+  },
+  "customizationOptions": {
+    "showSocialLinks": true,
+    "showContactForm": true,
+    "enableChatbot": true,
+    "propertyFilters": true
+  }
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "Luxury Apartments in Sector 65",
+    "description": "Modern 3BHK apartments with premium amenities in Sector 65, Faridabad.",
+    "location": "Sector 65, Faridabad",
+    "area": "1200 sq ft",
+    "price": "₹50,00,000",
+    "type": "Residential",
+    "images": ["https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400", "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400"],
+    "features": ["Swimming Pool", "Gym", "Parking", "Security"],
+    "googleLocation": "https://maps.app.goo.gl/sZyA44VjVaTiHX2b8?g_st=iw",
+    "status": "Available"
+  },
+  {
+    "id": 2,
+    "title": "Commercial Space in NIT",
+    "description": "Prime commercial space ideal for businesses in NIT Faridabad.",
+    "location": "NIT, Faridabad",
+    "area": "2500 sq ft",
+    "price": "₹1,20,00,000",
+    "type": "Commercial",
+    "images": ["https://images.unsplash.com/photo-1497366216548-37526070297c?w=400"],
+    "features": ["High-speed Internet", "Conference Rooms", "Reception Area"],
+    "googleLocation": "https://maps.app.goo.gl/sZyA44VjVaTiHX2b8?g_st=iw",
+    "status": "Under Construction"
+  },
+  {
+    "id": 3,
+    "title": "Independent Villa in Sector 21",
+    "description": "Spacious villa with garden and modern interiors in Sector 21, Faridabad.",
+    "location": "Sector 21, Faridabad",
+    "area": "3500 sq ft",
+    "price": "₹80,00,000",
+    "type": "Residential",
+    "images": ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400", "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400", "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400"],
+    "features": ["Garden", "Garage", "Home Theater", "Solar Panels"],
+    "googleLocation": "https://maps.app.goo.gl/sZyA44VjVaTiHX2b8?g_st=iw",
+    "status": "Available"
+  }
+]
