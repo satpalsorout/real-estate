@@ -10,6 +10,15 @@ const Chatbot = ({ isDarkMode }) => {
   ]);
   const [input, setInput] = useState('');
   const [inactivityTimer, setInactivityTimer] = useState(null);
+  const [isBuzzing, setIsBuzzing] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBuzzing(false);
+    }, 3000); // Buzz for 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -90,7 +99,8 @@ const Chatbot = ({ isDarkMode }) => {
   return (
     <>
       {!isOpen && (
-        <div className="chatbot-toggle" onClick={() => setIsOpen(true)}>
+        <div className={`chatbot-toggle ${isBuzzing ? 'buzz' : ''}`} onClick={() => setIsOpen(true)}>
+          <div className="chatbot-label">Chat with us</div>
           <FontAwesomeIcon icon={faComments} />
         </div>
       )}

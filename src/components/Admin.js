@@ -8,6 +8,7 @@ const Admin = ({ isDarkMode }) => {
   const { toggleTheme } = useContext(ThemeContext);
   const [properties, setProperties] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
+  const [editingProperty, setEditingProperty] = useState(null);
   const [newProperty, setNewProperty] = useState({
     title: '',
     description: '',
@@ -15,7 +16,7 @@ const Admin = ({ isDarkMode }) => {
     area: '',
     price: '',
     type: 'Residential',
-    images: [''],
+    images: [],
     features: [],
     googleLocation: '',
     status: 'Available'
@@ -34,11 +35,35 @@ const Admin = ({ isDarkMode }) => {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
+    const promises = files.map(file => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    });
+    Promise.all(promises).then(dataUrls => {
+      setNewProperty(prev => ({
+        ...prev,
+        images: dataUrls
+      }));
+    });
+  };
+
   const handleAddProperty = () => {
-    const updatedProperties = [...properties, { ...newProperty, id: Date.now() }];
+    let updatedProperties;
+    if (editingProperty) {
+      updatedProperties = properties.map(prop => prop.id === editingProperty.id ? { ...newProperty, id: editingProperty.id } : prop);
+    } else {
+      updatedProperties = [...properties, { ...newProperty, id: Date.now() }];
+    }
     setProperties(updatedProperties);
     localStorage.setItem('properties', JSON.stringify(updatedProperties));
     setIsAdding(false);
+    setEditingProperty(null);
     setNewProperty({
       title: '',
       description: '',
@@ -46,7 +71,7 @@ const Admin = ({ isDarkMode }) => {
       area: '',
       price: '',
       type: 'Residential',
-      images: [''],
+      images: [],
       features: [],
       googleLocation: '',
       status: 'Available'
@@ -57,6 +82,12 @@ const Admin = ({ isDarkMode }) => {
     const updatedProperties = properties.filter(property => property.id !== id);
     setProperties(updatedProperties);
     localStorage.setItem('properties', JSON.stringify(updatedProperties));
+  };
+
+  const handleEditProperty = (property) => {
+    setEditingProperty(property);
+    setNewProperty(property);
+    setIsAdding(true);
   };
 
   return (
@@ -74,7 +105,7 @@ const Admin = ({ isDarkMode }) => {
 
         {isAdding && (
           <div className="add-property-form">
-            <h2>Add New Property</h2>
+            <h2>{editingProperty ? 'Edit Property' : 'Add New Property'}</h2>
             <input
               type="text"
               name="title"
@@ -114,15 +145,12 @@ const Admin = ({ isDarkMode }) => {
               <option value="Commercial">Commercial</option>
             </select>
             <input
-              type="text"
-              name="images"
-              placeholder="Image URL (comma separated)"
-              value={newProperty.images.join(', ')}
-              onChange={(e) => setNewProperty(prev => ({
-                ...prev,
-                images: e.target.value.split(', ')
-              }))}
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleFileChange}
             />
+            <p>Selected images: {newProperty.images.length}</p>
             <input
               type="text"
               name="features"
@@ -140,7 +168,7 @@ const Admin = ({ isDarkMode }) => {
               value={newProperty.googleLocation}
               onChange={handleInputChange}
             />
-            <button onClick={handleAddProperty} className="submit-button">Add Property</button>
+            <button onClick={handleAddProperty} className="submit-button">{editingProperty ? 'Update Property' : 'Add Property'}</button>
           </div>
         )}
 
@@ -153,9 +181,14 @@ const Admin = ({ isDarkMode }) => {
                 <p>{property.location}</p>
                 <p>{property.price}</p>
               </div>
-              <button onClick={() => handleDeleteProperty(property.id)} className="delete-button">
-                Delete
-              </button>
+              <div className="item-actions">
+                <button onClick={() => handleEditProperty(property)} className="edit-button">
+                  Edit
+                </button>
+                <button onClick={() => handleDeleteProperty(property.id)} className="delete-button">
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

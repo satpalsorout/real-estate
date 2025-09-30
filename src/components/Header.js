@@ -52,8 +52,8 @@ const Header = ({ toggleTheme, isDarkMode, setCurrentView, isLoggedIn, onAdminCl
           </ul>
         </nav>
         <div className="contact-info">
-          <span><FontAwesomeIcon icon={faPhone} /> {config.dealer?.phone}</span>
-          <span><FontAwesomeIcon icon={faEnvelope} /> {config.dealer?.email}</span>
+          <a href={`tel:${config.dealer?.phone}`}><FontAwesomeIcon icon={faPhone} /> {config.dealer?.phone}</a>
+          <a href={`mailto:${config.dealer?.email}`}><FontAwesomeIcon icon={faEnvelope} /> {config.dealer?.email}</a>
         </div>
         {config.theme?.allowThemeToggle && (
           <button onClick={toggleTheme} className="theme-toggle">

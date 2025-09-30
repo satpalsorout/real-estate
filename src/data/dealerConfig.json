@@ -1,15 +1,15 @@
 {
   "dealer": {
     "name": "Jaideep Real Estate",
-    "address": "Jaideep Real Estate sector 65 Faridabad 121004, HR, India",
-    "location": "Faridabad",
+    "address": "1617P,Sector 64-65 Dividing Rd, Sector 65, Faridabad, Haryana 121004",
+    "location": "Sector 65, Faridabad",
     "area": "Haryana, India",
-    "googleLocation": "https://maps.app.goo.gl/sZyA44VjVaTiHX2b8?g_st=iw",
+    "googleLocation": "https://www.google.com/maps/place/Jaideep+Real+Estate/@28.3170029,77.3377998,17z/data=!3m1!4b1!4m6!3m5!1s0x390cdbe9b0c4cffb:0x16364d63219e4aa5!8m2!3d28.3170029!4d77.3377998!16s%2Fg%2F11kpk9x5pd?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D",
     "websiteName": "Faridabad Property",
     "phone": "+91 9999068444",
     "whatsapp": "9999068444",
     "email": "Jaideeppanwar2046@gmail.com",
-    "description": "Leading property dealer specializing in residential and commercial real estate solutions in Faridabad. We offer comprehensive services including property sales, purchases, rentals, and investment opportunities in the growing Faridabad region.",
+    "description": "Jaideep Real Estate is a leading property dealer specializing in residential and commercial real estate solutions across Greater Faridabad. We offer comprehensive services including property sales, purchases, rentals, and investment opportunities in prime locations such as Sector 2, 3, 62, 63, 64, 65, and other key sectors in the rapidly developing Greater Faridabad region. With extensive knowledge of the local market, we help clients find the perfect property to match their needs and budget.",
     "chatMessage": "Hello! How can I help you with your property search in Faridabad today?",
     "logo": "/logo.png",
     "heroBg": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200",
@@ -29,8 +29,8 @@
     }
   },
   "admin": {
-    "username": "admin",
-    "password": "faridabad123"
+    "username": "jaideep",
+    "password": "faridajaideep2046"
   },
   "customizationOptions": {
     "showSocialLinks": true,
