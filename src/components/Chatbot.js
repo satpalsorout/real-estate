@@ -41,7 +41,7 @@ const Chatbot = ({ isDarkMode }) => {
         clearTimeout(inactivityTimer);
       }
     };
-  }, [isOpen]);
+  }, [isOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const resetInactivityTimer = () => {
     if (inactivityTimer) {
