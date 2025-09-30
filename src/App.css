@@ -52,6 +52,7 @@ body {
   background-color: var(--header-bg);
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 .header .container {
@@ -576,6 +577,7 @@ nav button:hover {
     right: 0;
     background-color: var(--header-bg);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
   }
 
   nav.open {
