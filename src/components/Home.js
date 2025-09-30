@@ -108,13 +108,26 @@ const Home = ({ isDarkMode, isLoggedIn }) => {
           <div className="about-details">
             <div className="detail">
               <h3>Location</h3>
-              <p><a href="https://www.google.com/maps/search/Sector+65,+Faridabad,+Haryana,+India" target="_blank" rel="noopener noreferrer">{config.dealer?.location}, {config.dealer?.area}</a></p>
+              <p><a href={config.dealer?.googleLocation} target="_blank" rel="noopener noreferrer">{config.dealer?.location}</a></p>
             </div>
             <div className="detail">
               <h3>Contact</h3>
               <p><a href={`tel:${config.dealer?.phone}`}>{config.dealer?.phone}</a></p>
               <p><a href={`mailto:${config.dealer?.email}`}>{config.dealer?.email}</a></p>
             </div>
+          </div>
+          <div className="map-section">
+            <h3>Our Location</h3>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.1234567890123!2d77.3377998!3d28.3170029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdbe9b0c4cffb%3A0x16364d63219e4aa5!2sJaideep+Real+Estate!5e0!3m2!1sen!2sin!4v1696041600000!5m2!1sen!2sin"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Jaideep Real Estate Location"
+            ></iframe>
           </div>
         </div>
       </section>
