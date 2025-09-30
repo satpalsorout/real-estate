@@ -37,5 +37,19 @@
     "showContactForm": true,
     "enableChatbot": true,
     "propertyFilters": true
-  }
+  },
+  "testimonials": [
+    {
+      "name": "Deepak Deepak Raj",
+      "review": "Highly professional and honest in all dealings. I truly appreciated the excellent assistance provided."
+    },
+    {
+      "name": "Rakesh Tewatia",
+      "review": "Had a very pleasant and productive meeting with Jaideep Real Estate. Highly recommended for property needs."
+    },
+    {
+      "name": "Naresh Kumar",
+      "review": "Excellent service and guidance provided for HUDA properties. Very knowledgeable and helpful professional."
+    }
+  ]
 }

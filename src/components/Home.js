@@ -132,6 +132,23 @@ const Home = ({ isDarkMode, isLoggedIn }) => {
         </div>
       </section>
 
+      <section id="testimonials" className="testimonials-section">
+        <div className="container">
+          <h2>What Our Customers Say</h2>
+          <div className="testimonials-grid">
+            {config.testimonials?.map((testimonial, index) => (
+              <div key={index} className="testimonial-card">
+                <p className="review">"{testimonial.review}"</p>
+                <p className="name">- {testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="growth" className="growth-section">
+      </section>
+
       <section id="growth" className="growth-section">
         <div className="container">
           <h2>Why Invest in Faridabad?</h2>
